@@ -1,0 +1,64 @@
+PHPUnit 9.6.17 by Sebastian Bergmann and contributors.
+Runtime:       PHP 8.3.6
+Configuration: /home/claude/sigebi/phpunit.xml
+F1Caracterizacion
+ ✔ Multa que calcula hoy with data set "0 días, estudiante, general"
+ ✔ Multa que calcula hoy with data set "1 día, estudiante, general (DEFECTO: negativa)"
+ ✔ Multa que calcula hoy with data set "5 días, estudiante, general"
+ ✔ Multa que calcula hoy with data set "3 días, estudiante, reserva"
+ ✔ Multa que calcula hoy with data set "3 días, docente, general (DEFECTO: negativa)"
+ ✔ Multa que calcula hoy with data set "10 días, docente, general"
+ ✔ Multa que calcula hoy with data set "2 días, externo, cualquiera"
+F2Caracterizacion
+ ✔ Estudiante reserva tres dias cobra tarifa vieja
+ ✔ Sin mora renueva
+ ✔ Con dos renovaciones no permite mas
+F3Caracterizacion
+ ✔ Registra prestamo valido
+ ✔ Usuario inactivo
+ ✔ Acepta estado en minuscula
+ ✔ Ejemplar no disponible
+ ✔ Estudiante con cinco prestamos alcanza el limite
+ ✔ Docente con nueve aun puede prestar
+ ✔ Docente con diez alcanza el limite
+ ✔ Inyeccion sql evade la validacion del usuario
+F4Caracterizacion
+ ✔ Lee las columnas sin nombre
+Calculadora Multa
+ ✔ Calcula la multa with data set "0 días, estudiante, general"
+ ✔ Calcula la multa with data set "1 día, estudiante, general (era -500)"
+ ✔ Calcula la multa with data set "5 días, estudiante, general"
+ ✔ Calcula la multa with data set "3 días, estudiante, reserva"
+ ✔ Calcula la multa with data set "3 días, docente, general (era -600)"
+ ✔ Calcula la multa with data set "10 días, docente, general"
+ ✔ Calcula la multa with data set "2 días, externo, cualquiera"
+ ✔ Calcula la multa with data set "límite de gracia: estudiante general 2 días"
+ ✔ Calcula la multa with data set "primer día cobrado: estudiante general 3 días"
+ ✔ Calcula la multa with data set "docente reserva 4 días"
+ ✔ Calcula la multa with data set "externo reserva 1 día"
+ ✔ Nunca devuelve multa negativa
+Configuracion
+ ✔ Entrega los mismos valores que el original
+Devolucion Action
+ ✔ Registra la devolucion con la multa correcta
+ ✔ Devolucion a tiempo no genera multa
+Equivalencia F1
+ ✔ Mismo comportamiento que el original
+Prestamo Service
+ ✔ Mismo resultado que el original with data set "préstamo válido"
+ ✔ Mismo resultado que el original with data set "usuario inactivo"
+ ✔ Mismo resultado que el original with data set "estado en minúscula"
+ ✔ Mismo resultado que el original with data set "ejemplar no disponible"
+ ✔ Mismo resultado que el original with data set "estudiante con 5 préstamos"
+ ✔ Mismo resultado que el original with data set "estudiante con 4 préstamos"
+ ✔ Mismo resultado que el original with data set "docente con 9 préstamos"
+ ✔ Mismo resultado que el original with data set "docente con 10 préstamos"
+ ✔ Mismo resultado que el original with data set "usuario inexistente"
+ ✔ Inyeccion sql ya no evade la validacion
+Renovacion Action
+ ✔ Renovar y devolver cobran lo mismo
+ ✔ Sin mora renueva siete dias
+ ✔ Con dos renovaciones no permite mas
+ ✔ El maximo de renovaciones es configurable
+Time: 00:00.172, Memory: 6.00 MB
+OK (49 tests, 1324 assertions)

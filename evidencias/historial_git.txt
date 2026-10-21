@@ -1,0 +1,6 @@
+c1e1aa4|2026-10-21 01:36:42 +0000|Refactor F4: Configuracion (Encapsulate Field + Rename); el maximo de renovaciones sale de la configuracion
+2648c3d|2026-10-21 01:36:20 +0000|Refactor F3: PrestamoService (Extract Method, Move Method, Replace Temp with Query), limites como constantes y consultas preparadas (cierra la inyeccion SQL)
+ad02cd3|2026-10-21 01:36:05 +0000|Refactor F2: renovar() delega en CalculadoraMulta (2 de las 12 copias pasan a 1); fix tarifa reserva 1.500 -> 2.000
+fa71d5e|2026-10-21 01:35:52 +0000|Fix F1: la multa nunca es negativa (defectos 1 y 2 del caso), en cambio separado de la refactorizacion
+86cfd68|2026-10-21 01:35:38 +0000|Refactor F1: Extract Method, Replace Temp with Query, Extract Class/Move Method, Parameter Object (240/240 combinaciones identicas al original)
+2049c86|2026-10-21 01:35:29 +0000|Base: codigo original F1-F4 congelado + pruebas de caracterizacion (19 pruebas verdes)

@@ -1,0 +1,55 @@
+
+  SIGEBI · Biblioteca Universitaria Villa Verde — demostración de la refactorización
+  Código original: original/   ·   Código refactorizado: src/   ·   PHP 8.3.6
+
+════════════════════════════════════════════════════════════════════════
+ ESCENA 1 · La regla de multas duplicada cobraba distinto (F1 vs F2)
+════════════════════════════════════════════════════════════════════════
+  › Caso: estudiante, material de RESERVA, 3 días de retraso.
+  ANTES    devolver()  cobra $4.000    renovar()  cobra $3.000   ← misma situación, dos precios
+  DESPUÉS  devolver()  cobra $4.000    renovar()  cobra $4.000   ← una sola CalculadoraMulta
+  › Técnicas: Extract Class + Move Method + Introduce Parameter Object (CondicionesMora).
+
+════════════════════════════════════════════════════════════════════════
+ ESCENA 2 · Los 7 casos del enunciado: comportamiento conservado y defecto corregido
+════════════════════════════════════════════════════════════════════════
+  Días Usuario     Material     Original  Refactorizado   
+  0     Estudiante  General            $0             $0   igual
+  1     Estudiante  General         -$500             $0   defecto corregido (multa negativa → 0)
+  5     Estudiante  General        $1.500         $1.500   igual
+  3     Estudiante  Reserva        $4.000         $4.000   igual
+  3     Docente     General         -$600             $0   defecto corregido (multa negativa → 0)
+  10    Docente     General        $1.500         $1.500   igual
+  2     Externo     General        $3.000         $3.000   igual
+  › La corrección se hizo en un commit SEPARADO de la refactorización (fa71d5e).
+
+════════════════════════════════════════════════════════════════════════
+ ESCENA 3 · Prueba de equivalencia: 240 combinaciones original vs refactorizado
+════════════════════════════════════════════════════════════════════════
+  Combinaciones ejecutadas (0–39 días × 3 usuarios × 2 materiales): 240
+  Resultado y mensaje idénticos:                                     235
+  Multa negativa del original corregida a 0:                         5
+  Cualquier otra diferencia:                                         0
+
+════════════════════════════════════════════════════════════════════════
+ ESCENA 4 · Inyección SQL en el registro de préstamos (F3)
+════════════════════════════════════════════════════════════════════════
+  › Código de usuario escrito en el formulario:  zzz' OR codigo='U001
+  ANTES    Préstamo registrado para Ana Pérez. Vence el 2026-10-28  (préstamos creados: 1)
+  DESPUÉS  Usuario inactivo  (préstamos creados: 0)
+  › El SQL salió de la lógica a RepositorioCirculacionPdo, que solo usa consultas preparadas.
+
+  › Flujo normal (Ana Pérez, U001, ejemplar B001) con el servicio nuevo:
+  DESPUÉS  Préstamo registrado para Ana Pérez. Vence el 2026-10-28
+
+════════════════════════════════════════════════════════════════════════
+ ESCENA 5 · Configuración con nombres en lugar de dato1…dato70 (F4)
+════════════════════════════════════════════════════════════════════════
+  ANTES    $cfg['dato21']  → 2   ¿qué es dato21? hay que leer código para saberlo
+  DESPUÉS  $config->maximoRenovaciones()     → 2
+  DESPUÉS  $config->diasPrestamoEstudiante() → 7
+  DESPUÉS  $config->datoDesconocido52()      → 0   (nombre honesto hasta validarlo)
+
+  › El máximo de renovaciones ya no está escrito en renovar(): viene de la configuración.
+  DESPUÉS  Préstamo con 2 renovaciones → No se permiten más renovaciones
+

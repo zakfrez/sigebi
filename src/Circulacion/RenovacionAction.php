@@ -1,24 +1,27 @@
 <?php
 namespace Sigebi\Circulacion;
 
+use Sigebi\Config\Configuracion;
 use Sigebi\Multa\CalculadoraMulta;
 use Sigebi\Multa\CondicionesMora;
 
 /** F2 refactorizado: ya no copia la regla de multas; delega en CalculadoraMulta (Move Method). */
 final class RenovacionAction
 {
-    const MAX_RENOVACIONES = 2;
     const DIAS_RENOVACION = 7;
 
     /** @var RepositorioCirculacion */
     private $repositorio;
     /** @var CalculadoraMulta */
     private $calculadora;
+    /** @var Configuracion */
+    private $configuracion;
 
-    public function __construct(RepositorioCirculacion $repositorio, CalculadoraMulta $calculadora)
+    public function __construct(RepositorioCirculacion $repositorio, CalculadoraMulta $calculadora, Configuracion $configuracion)
     {
         $this->repositorio = $repositorio;
         $this->calculadora = $calculadora;
+        $this->configuracion = $configuracion;
     }
 
     public function renovar(int $idPrestamo, ?string $hoy = null): ResultadoRenovacion
@@ -44,6 +47,7 @@ final class RenovacionAction
 
     private function maximoDeRenovaciones(): int
     {
-        return self::MAX_RENOVACIONES;
+        // Antes: el 2 estaba escrito en el código aunque ya existía en config_general (dato21).
+        return $this->configuracion->maximoRenovaciones();
     }
 }

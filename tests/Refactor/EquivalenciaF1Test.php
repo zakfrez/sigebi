@@ -9,7 +9,8 @@ require_once __DIR__ . '/../../original/DevolucionAction.php';
 
 /**
  * Compara el devolver() ORIGINAL con el refactorizado en 240 combinaciones
- * (0 a 39 días x 3 tipos de usuario x 2 tipos de material).
+ * (0 a 39 días x 3 tipos de usuario x 2 tipos de material). Única diferencia permitida:
+ * donde el original guardaba una multa NEGATIVA (defecto), el refactorizado guarda 0.
  */
 final class EquivalenciaF1Test extends TestCase
 {
@@ -37,15 +38,14 @@ final class EquivalenciaF1Test extends TestCase
                     $multaNueva = $accion->devolver($idNuevo);
 
                     $total++;
-                    $this->assertSame($multaOriginal, $multaNueva, "u=$usr m=$mat d=$dias");
+                    $this->assertSame(max(0, $multaOriginal), $multaNueva, "u=$usr m=$mat d=$dias");
                     $this->assertSame($salidaOriginal, $vista->mensajeDevolucion($multaNueva), "mensaje u=$usr m=$mat d=$dias");
-                    if ($multaOriginal < 0) { $negativasOriginal++; }
-                    $iguales++;
+                    if ($multaOriginal < 0) { $negativasOriginal++; } else { $iguales++; }
                 }
             }
         }
         file_put_contents(__DIR__ . '/../../evidencias/equivalencia_f1.json',
-            json_encode(['combinaciones' => $total, 'iguales' => $iguales, 'multas_negativas_del_original' => $negativasOriginal]));
+            json_encode(['combinaciones' => $total, 'identicas' => $iguales, 'multas_negativas_corregidas_a_cero' => $negativasOriginal]));
         $this->assertSame(240, $total);
     }
 }

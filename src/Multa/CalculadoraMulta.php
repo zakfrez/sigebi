@@ -19,7 +19,8 @@ final class CalculadoraMulta
             return 0;
         }
         list($diasDeGracia, $tarifaPorDia) = $this->reglaPara($c->tipoUsuario, $c->tipoMaterial);
-        return ($c->diasVencidos - $diasDeGracia) * $tarifaPorDia;
+        // Corrección del defecto del caso: dentro de los días de gracia la multa es 0, nunca negativa.
+        return max(0, ($c->diasVencidos - $diasDeGracia) * $tarifaPorDia);
     }
 
     /** @return int[] [días de gracia, tarifa por día] */

@@ -4,6 +4,7 @@ namespace Sigebi\Circulacion;
 use Sigebi\Config\Configuracion;
 use Sigebi\Multa\CalculadoraMulta;
 use Sigebi\Multa\CondicionesMora;
+use Sigebi\Multa\DiasVencidos;
 
 /** F2 refactorizado: ya no copia la regla de multas; delega en CalculadoraMulta (Move Method). */
 final class RenovacionAction
@@ -30,7 +31,7 @@ final class RenovacionAction
         $prestamo = $this->repositorio->buscarPrestamo($idPrestamo);
 
         $multa = $this->calculadora->calcular(new CondicionesMora(
-            (int) round((strtotime($hoy) - strtotime($prestamo['fecha_venc'])) / 86400),
+            DiasVencidos::entre($prestamo['fecha_venc'], $hoy),
             (int) $prestamo['tipo_usr'],
             (int) $prestamo['tipo_mat']
         ));

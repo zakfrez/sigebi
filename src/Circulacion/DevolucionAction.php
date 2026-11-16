@@ -3,6 +3,7 @@ namespace Sigebi\Circulacion;
 
 use Sigebi\Multa\CalculadoraMulta;
 use Sigebi\Multa\CondicionesMora;
+use Sigebi\Multa\DiasVencidos;
 
 /** F1 refactorizado: devolver() ya no mezcla negocio, SQL y HTML. */
 final class DevolucionAction
@@ -32,14 +33,9 @@ final class DevolucionAction
     private function condicionesDe(array $prestamo, string $hoy): CondicionesMora
     {
         return new CondicionesMora(
-            $this->diasVencidos($prestamo['fecha_venc'], $hoy),
+            DiasVencidos::entre($prestamo['fecha_venc'], $hoy),
             (int) $prestamo['tipo_usr'],
             (int) $prestamo['tipo_mat']
         );
-    }
-
-    private function diasVencidos(string $fechaVencimiento, string $hoy): int
-    {
-        return (int) round((strtotime($hoy) - strtotime($fechaVencimiento)) / 86400);
     }
 }

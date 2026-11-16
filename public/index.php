@@ -34,7 +34,7 @@ function e($v): string { return htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8
 function pesos(int $v): string { return '$' . number_format($v, 0, ',', '.'); }
 function avisar(bool $ok, string $html): void { $_SESSION['aviso'] = ['ok' => $ok, 'html' => $html]; }
 function ir(string $pagina): void { header('Location: ?p=' . $pagina); exit; }
-function diasEntre(string $desde, string $hasta): int { return (int) round((strtotime($hasta) - strtotime($desde)) / 86400); }
+function diasEntre(string $desde, string $hasta): int { return \Sigebi\Multa\DiasVencidos::entre($desde, $hasta); }
 function tipoUsuario(int $t): string { return [1 => 'Estudiante', 2 => 'Docente', 3 => 'Externo'][$t] ?? 'Otro'; }
 function tipoMaterial(int $t): string { return $t === 3 ? 'Reserva' : 'General'; }
 

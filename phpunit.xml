@@ -4,4 +4,8 @@
     <testsuite name="original"><directory>tests/Original</directory></testsuite>
     <testsuite name="refactor"><directory>tests/Refactor</directory></testsuite>
   </testsuites>
+  <!-- Cobertura medida sobre el código refactorizado (src/) -->
+  <coverage processUncoveredFiles="true">
+    <include><directory suffix=".php">src</directory></include>
+  </coverage>
 </phpunit>

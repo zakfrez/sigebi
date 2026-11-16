@@ -40,11 +40,17 @@ La salida de referencia está en `evidencias/demo_salida.txt`.
 ## Cómo ejecutar las pruebas
 Requisitos: PHP 7.4 o superior con `pdo_sqlite`, y PHPUnit 9.
 ```
-phpunit                       # todas las pruebas (49)
+phpunit                       # todas las pruebas (56)
 phpunit --testsuite original  # solo el código original (19)
-phpunit --testsuite refactor  # solo el código refactorizado (30)
+phpunit --testsuite refactor  # solo el código refactorizado (37)
 phpunit --testdox             # lista legible de pruebas
-git log --oneline             # historial de cambios (6 commits)
+phpunit --testsuite refactor --coverage-text   # cobertura (requiere PCOV o Xdebug)
+git log --oneline             # historial de cambios
 ```
 Nota: las funciones `mysql_*` del código original no existen desde PHP 7. `tests/FakeMysql.php`
 las simula sobre SQLite en memoria para poder ejecutar el original sin modificarlo.
+
+## Refactorización del cálculo de días vencidos (Taller final)
+La fórmula de días vencidos estaba copiada en 3 lugares; ahora vive solo en `src/Multa/DiasVencidos.php` (Extract Class).
+Las 49 pruebas anteriores pasan sin cambios y se agregaron 7 pruebas nuevas.
+Comparación de cobertura antes/después: `evidencias/cobertura/COMPARACION.md`.

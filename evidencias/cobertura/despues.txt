@@ -1,0 +1,32 @@
+
+
+Code Coverage Report:      
+  2026-11-16 17:32:26      
+                           
+ Summary:                  
+  Classes: 90.91% (10/11)  
+  Methods: 97.83% (45/46)  
+  Lines:   99.10% (110/111)
+
+Sigebi\Circulacion\DevolucionAction
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 12/ 12)
+Sigebi\Circulacion\RenovacionAction
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 18/ 18)
+Sigebi\Circulacion\RepositorioCirculacionPdo
+  Methods: 100.00% (10/10)   Lines: 100.00% ( 19/ 19)
+Sigebi\Circulacion\ResultadoRenovacion
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  8/  8)
+Sigebi\Circulacion\VistaCirculacion
+  Methods:  75.00% ( 3/ 4)   Lines:  87.50% (  7/  8)
+Sigebi\Config\Configuracion
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 11/ 11)
+Sigebi\Multa\CalculadoraMulta
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+Sigebi\Multa\CondicionesMora
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  3/  3)
+Sigebi\Multa\DiasVencidos
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Sigebi\Prestamos\PrestamoService
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 17/ 17)
+Sigebi\Prestamos\ResultadoPrestamo
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  4/  4)

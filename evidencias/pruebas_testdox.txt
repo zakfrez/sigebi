@@ -1,64 +1,86 @@
 PHPUnit 9.6.17 by Sebastian Bergmann and contributors.
+
 Runtime:       PHP 8.3.6
-Configuration: /home/claude/sigebi/phpunit.xml
+Configuration: /home/claude/src/sigebi/phpunit.xml
+
 F1Caracterizacion
- ✔ Multa que calcula hoy with data set "0 días, estudiante, general"
- ✔ Multa que calcula hoy with data set "1 día, estudiante, general (DEFECTO: negativa)"
- ✔ Multa que calcula hoy with data set "5 días, estudiante, general"
- ✔ Multa que calcula hoy with data set "3 días, estudiante, reserva"
- ✔ Multa que calcula hoy with data set "3 días, docente, general (DEFECTO: negativa)"
- ✔ Multa que calcula hoy with data set "10 días, docente, general"
- ✔ Multa que calcula hoy with data set "2 días, externo, cualquiera"
+ ✔ Multa que calcula hoy with data set "0 días, estudiante, general" [2.00 ms]
+ ✔ Multa que calcula hoy with data set "1 día, estudiante, general (DEFECTO: negativa)" [0.46 ms]
+ ✔ Multa que calcula hoy with data set "5 días, estudiante, general" [0.26 ms]
+ ✔ Multa que calcula hoy with data set "3 días, estudiante, reserva" [0.22 ms]
+ ✔ Multa que calcula hoy with data set "3 días, docente, general (DEFECTO: negativa)" [0.26 ms]
+ ✔ Multa que calcula hoy with data set "10 días, docente, general" [0.22 ms]
+ ✔ Multa que calcula hoy with data set "2 días, externo, cualquiera" [0.22 ms]
+
 F2Caracterizacion
- ✔ Estudiante reserva tres dias cobra tarifa vieja
- ✔ Sin mora renueva
- ✔ Con dos renovaciones no permite mas
+ ✔ Estudiante reserva tres dias cobra tarifa vieja [26.57 ms]
+ ✔ Sin mora renueva [38.33 ms]
+ ✔ Con dos renovaciones no permite mas [32.88 ms]
+
 F3Caracterizacion
- ✔ Registra prestamo valido
- ✔ Usuario inactivo
- ✔ Acepta estado en minuscula
- ✔ Ejemplar no disponible
- ✔ Estudiante con cinco prestamos alcanza el limite
- ✔ Docente con nueve aun puede prestar
- ✔ Docente con diez alcanza el limite
- ✔ Inyeccion sql evade la validacion del usuario
+ ✔ Registra prestamo valido [0.51 ms]
+ ✔ Usuario inactivo [0.22 ms]
+ ✔ Acepta estado en minuscula [0.35 ms]
+ ✔ Ejemplar no disponible [0.28 ms]
+ ✔ Estudiante con cinco prestamos alcanza el limite [0.21 ms]
+ ✔ Docente con nueve aun puede prestar [0.25 ms]
+ ✔ Docente con diez alcanza el limite [0.33 ms]
+ ✔ Inyeccion sql evade la validacion del usuario [0.27 ms]
+
 F4Caracterizacion
- ✔ Lee las columnas sin nombre
+ ✔ Lee las columnas sin nombre [0.46 ms]
+
 Calculadora Multa
- ✔ Calcula la multa with data set "0 días, estudiante, general"
- ✔ Calcula la multa with data set "1 día, estudiante, general (era -500)"
- ✔ Calcula la multa with data set "5 días, estudiante, general"
- ✔ Calcula la multa with data set "3 días, estudiante, reserva"
- ✔ Calcula la multa with data set "3 días, docente, general (era -600)"
- ✔ Calcula la multa with data set "10 días, docente, general"
- ✔ Calcula la multa with data set "2 días, externo, cualquiera"
- ✔ Calcula la multa with data set "límite de gracia: estudiante general 2 días"
- ✔ Calcula la multa with data set "primer día cobrado: estudiante general 3 días"
- ✔ Calcula la multa with data set "docente reserva 4 días"
- ✔ Calcula la multa with data set "externo reserva 1 día"
- ✔ Nunca devuelve multa negativa
+ ✔ Calcula la multa with data set "0 días, estudiante, general" [0.13 ms]
+ ✔ Calcula la multa with data set "1 día, estudiante, general (era -500)" [0.02 ms]
+ ✔ Calcula la multa with data set "5 días, estudiante, general" [0.01 ms]
+ ✔ Calcula la multa with data set "3 días, estudiante, reserva" [0.01 ms]
+ ✔ Calcula la multa with data set "3 días, docente, general (era -600)" [0.01 ms]
+ ✔ Calcula la multa with data set "10 días, docente, general" [0.01 ms]
+ ✔ Calcula la multa with data set "2 días, externo, cualquiera" [0.01 ms]
+ ✔ Calcula la multa with data set "límite de gracia: estudiante general 2 días" [0.01 ms]
+ ✔ Calcula la multa with data set "primer día cobrado: estudiante general 3 días" [0.01 ms]
+ ✔ Calcula la multa with data set "docente reserva 4 días" [0.01 ms]
+ ✔ Calcula la multa with data set "externo reserva 1 día" [0.01 ms]
+ ✔ Nunca devuelve multa negativa [2.75 ms]
+
 Configuracion
- ✔ Entrega los mismos valores que el original
+ ✔ Entrega los mismos valores que el original [0.44 ms]
+
 Devolucion Action
- ✔ Registra la devolucion con la multa correcta
- ✔ Devolucion a tiempo no genera multa
+ ✔ Registra la devolucion con la multa correcta [0.60 ms]
+ ✔ Devolucion a tiempo no genera multa [0.24 ms]
+
+Dias Vencidos
+ ✔ Prestamo atrasado da dias positivos [0.02 ms]
+ ✔ Si vence hoy no hay dias vencidos [0.02 ms]
+ ✔ Si aun no vence da dias negativos [0.01 ms]
+ ✔ Cuenta bien al cambiar de mes [0.03 ms]
+ ✔ Cuenta bien al cambiar de anio [0.09 ms]
+ ✔ Cuenta el dia 29 de febrero en anio bisiesto [0.01 ms]
+ ✔ Da lo mismo que la formula que estaba copiada [0.32 ms]
+
 Equivalencia F1
- ✔ Mismo comportamiento que el original
+ ✔ Mismo comportamiento que el original [96.52 ms]
+
 Prestamo Service
- ✔ Mismo resultado que el original with data set "préstamo válido"
- ✔ Mismo resultado que el original with data set "usuario inactivo"
- ✔ Mismo resultado que el original with data set "estado en minúscula"
- ✔ Mismo resultado que el original with data set "ejemplar no disponible"
- ✔ Mismo resultado que el original with data set "estudiante con 5 préstamos"
- ✔ Mismo resultado que el original with data set "estudiante con 4 préstamos"
- ✔ Mismo resultado que el original with data set "docente con 9 préstamos"
- ✔ Mismo resultado que el original with data set "docente con 10 préstamos"
- ✔ Mismo resultado que el original with data set "usuario inexistente"
- ✔ Inyeccion sql ya no evade la validacion
+ ✔ Mismo resultado que el original with data set "préstamo válido" [1.01 ms]
+ ✔ Mismo resultado que el original with data set "usuario inactivo" [0.53 ms]
+ ✔ Mismo resultado que el original with data set "estado en minúscula" [0.74 ms]
+ ✔ Mismo resultado que el original with data set "ejemplar no disponible" [0.54 ms]
+ ✔ Mismo resultado que el original with data set "estudiante con 5 préstamos" [0.56 ms]
+ ✔ Mismo resultado que el original with data set "estudiante con 4 préstamos" [0.62 ms]
+ ✔ Mismo resultado que el original with data set "docente con 9 préstamos" [0.56 ms]
+ ✔ Mismo resultado que el original with data set "docente con 10 préstamos" [0.63 ms]
+ ✔ Mismo resultado que el original with data set "usuario inexistente" [0.58 ms]
+ ✔ Inyeccion sql ya no evade la validacion [0.54 ms]
+
 Renovacion Action
- ✔ Renovar y devolver cobran lo mismo
- ✔ Sin mora renueva siete dias
- ✔ Con dos renovaciones no permite mas
- ✔ El maximo de renovaciones es configurable
-Time: 00:00.172, Memory: 6.00 MB
-OK (49 tests, 1324 assertions)
+ ✔ Renovar y devolver cobran lo mismo [0.69 ms]
+ ✔ Sin mora renueva siete dias [0.31 ms]
+ ✔ Con dos renovaciones no permite mas [0.21 ms]
+ ✔ El maximo de renovaciones es configurable [0.26 ms]
+
+Time: 00:00.221, Memory: 6.00 MB
+
+OK (56 tests, 1421 assertions)

@@ -1,3 +1,9 @@
+b478fc2|2026-11-16 17:32:23 -0500|Pruebas: DiasVencidosTest (7 casos: atraso, vence hoy, no vence, cambio de mes/anio, bisiesto, equivalencia con la formula anterior)
+bf86789|2026-11-16 17:32:23 -0500|Refactor: Extract Class DiasVencidos - el calculo de dias vencidos (copiado en 3 lugares) queda en uno solo; 49 pruebas siguen verdes sin modificarlas
+0acfe97|2026-11-16 17:31:44 -0500|Pruebas: configuracion de cobertura (src/) con PCOV
+8ed8dee|2026-11-16 17:31:40 -0500|App web: pantallas de prestamo, devolucion y renovacion sobre SQLite (usa las clases de src/)
+decea17|2026-10-21 09:19:35 -0500|Demo: script de demostracion en vivo (5 escenas antes/despues) y salida de referencia
+bca49da|2026-10-21 01:37:59 +0000|Docs: README, metricas y evidencias de ejecucion
 c1e1aa4|2026-10-21 01:36:42 +0000|Refactor F4: Configuracion (Encapsulate Field + Rename); el maximo de renovaciones sale de la configuracion
 2648c3d|2026-10-21 01:36:20 +0000|Refactor F3: PrestamoService (Extract Method, Move Method, Replace Temp with Query), limites como constantes y consultas preparadas (cierra la inyeccion SQL)
 ad02cd3|2026-10-21 01:36:05 +0000|Refactor F2: renovar() delega en CalculadoraMulta (2 de las 12 copias pasan a 1); fix tarifa reserva 1.500 -> 2.000

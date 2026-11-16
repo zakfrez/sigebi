@@ -9,6 +9,18 @@ Refactorización de los fragmentos F1 a F4 del caso (Biblioteca Universitaria Vi
 - `tests/Refactor/`  Pruebas del código refactorizado y de equivalencia con el original.
 - `evidencias/`  Salida de pruebas, métricas, equivalencia (240 combinaciones) e historial de Git.
 
+## Aplicación web (el software funcionando)
+Pantallas para registrar préstamos, devolver (con multa), renovar y ver usuarios, ejemplares y configuración.
+Toda la lógica la hacen las clases refactorizadas de `src/`; `public/index.php` solo las llama y muestra el resultado.
+La base de datos es un archivo SQLite (`datos/sigebi.sqlite`) que se crea solo con datos de ejemplo.
+```
+php -S localhost:8000 -t public      # luego abrir http://localhost:8000
+```
+En Windows también basta con doble clic en `iniciar.bat`.
+- **Fecha de operación** (arriba a la derecha): simula otro día para ver cómo crecen las multas.
+- **Configuración → Reiniciar datos**: vuelve al estado inicial.
+- `app/` contiene la conexión a la base de datos y los listados; no modifica nada de `src/`.
+
 ## Demostración en vivo (Actividad 4)
 Ejecuta el código original y el refactorizado con los mismos datos y muestra el resultado lado a lado.
 No necesita MySQL ni PHPUnit, solo PHP 7.4+ con `pdo_sqlite`.

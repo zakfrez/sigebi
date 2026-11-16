@@ -6,8 +6,8 @@ final class F2CaracterizacionTest extends TestCase
 {
     private function ejecutar(int $dias, int $usr, int $mat, int $renov): array
     {
-        $json = shell_exec(PHP_BINARY . ' ' . escapeshellarg(__DIR__ . '/run_renovar.php') . ' ' .
-            escapeshellarg(json_encode(['dias' => $dias, 'usr' => $usr, 'mat' => $mat, 'renov' => $renov])));
+        $json = shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__DIR__ . '/run_renovar.php') . ' ' .
+            $dias . ' ' . $usr . ' ' . $mat . ' ' . $renov);
         return json_decode($json, true);
     }
 

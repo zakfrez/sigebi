@@ -56,8 +56,7 @@ function devolverNuevo(int $dias, int $usr, int $mat): int
 /** Ejecuta el renovar() ORIGINAL en un proceso aparte (usa header() + exit). */
 function renovarOriginal(int $dias, int $usr, int $mat, int $renov = 0): array
 {
-    $json = shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__DIR__ . '/tests/Original/run_renovar.php') . ' ' .
-        escapeshellarg(json_encode(['dias' => $dias, 'usr' => $usr, 'mat' => $mat, 'renov' => $renov])));
+    $json = shell_exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__DIR__ . '/tests/Original/run_renovar.php') . ' ' . $dias . ' ' . $usr . ' ' . $mat . ' ' . $renov);
     return json_decode((string) $json, true) ?: [];
 }
 
